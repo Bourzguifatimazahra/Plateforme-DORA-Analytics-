@@ -3,6 +3,11 @@
 ## 🎯 Overview
 
 A unified DevOps intelligence platform that analyzes GitHub, GitLab, and Azure DevOps repositories to provide DORA metrics, performance insights, and automated reporting for engineering leadership.
+# Dashboard
+
+Here's a screenshot of my dashboard:
+
+![Dashboard Screenshot]( Gemini_Generated_Image_b96h3rb96h3rb96h.png)
 
 ## 🚀 Quick Start
 
@@ -319,11 +324,11 @@ graph LR
 
 | Role | Members | Responsibilities |
 |------|---------|------------------|
-| **Tech Lead** | 1 | Architecture, Code Review, Technical Decisions |
-| **Backend Dev** | 3 | API Development, Data Connectors, KPI Engine |
+| **Tech Lead** | 1 | Architecture, Code Review, Technical Decisions, Validation, Documentation  |
+| **Backend Dev** | 2 | API Development, Data Connectors, KPI Engine |
 | **Frontend Dev** | 2 | UI/UX, Dashboard, Visualization |
 | **DevOps** | 1 | Infrastructure, CI/CD, Deployment |
-| **QA** | 1 | Testing, Validation, Documentation |
+| **Ai** | 2 |Powered DevOps Assistant |
 
 ## 📈 Success Metrics
 
