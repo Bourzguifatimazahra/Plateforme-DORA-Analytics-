@@ -1,210 +1,383 @@
- # 🚀 DORA Metrics MVP – Plan d'exécution 48h
+ # 📊 Multi-Repo Analytics Platform
 
-<div align="center">
+## 🎯 Overview
 
-![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+A unified DevOps intelligence platform that analyzes GitHub, GitLab, and Azure DevOps repositories to provide DORA metrics, performance insights, and automated reporting for engineering leadership.
 
-</div>
+## 🚀 Quick Start
 
-## 🎯 Mission
-**Prouver en 48h** que nous pouvons transformer l'activité GitHub en insights actionnables via les métriques DORA
+```bash
+# Clone the repository
+git clone https://github.com/your-org/multi-repo-analytics
+cd multi-repo-analytics
+
+# Backend setup
+cd backend
+npm install
+cp .env.example .env
+npm run dev
+
+# Frontend setup
+cd ../frontend
+npm install
+npm run dev
+
+# Access the application
+# Frontend: http://localhost:3000
+# Backend API: http://localhost:5000
+```
+
+## 🏗️ System Architecture
+
+```mermaid
+graph TB
+    subgraph "Data Sources"
+        GH[GitHub Repo]
+        GL[GitLab Repo]
+        AD[Azure DevOps Repo]
+    end
+
+    subgraph "Platform"
+        API[API Gateway]
+        DC[Data Collector]
+        KE[KPI Engine]
+        DB[(PostgreSQL)]
+        PDF[PDF Generator]
+        RE[Recommendation Engine]
+        FE[Frontend Dashboard]
+    end
+
+    GH --> API
+    GL --> API
+    AD --> API
+    
+    API --> DC
+    DC --> KE
+    KE --> DB
+    KE --> PDF
+    KE --> RE
+    
+    DB --> FE
+    PDF --> FE
+    RE --> FE
+    
+    FE --> User[End User]
+```
+
+## 🛠️ Technology Stack
+
+### Frontend
+<p align="left">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white" alt="Chart.js" />
+  <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="Redux" />
+</p>
+
+### Backend
+<p align="left">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
+  <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" alt="Jest" />
+</p>
+
+### DevOps & Tools
+<p align="left">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" alt="GitHub Actions" />
+  <img src="https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&logo=puppeteer&logoColor=white" alt="Puppeteer" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="JWT" />
+</p>
+
+## 📁 Project Structure
+
+```
+multi-repo-analytics/
+├── 📁 backend
+│   ├── 📁 src
+│   │   ├── 📁 api
+│   │   │   ├── auth
+│   │   │   ├── repos
+│   │   │   ├── metrics
+│   │   │   └── reports
+│   │   ├── 📁 connectors
+│   │   │   ├── github
+│   │   │   ├── gitlab
+│   │   │   └── azure-devops
+│   │   ├── 📁 services
+│   │   │   ├── data-collector
+│   │   │   ├── kpi-calculator
+│   │   │   ├── recommendation-engine
+│   │   │   └── pdf-generator
+│   │   └── 📁 database
+│   │       └── models
+├── 📁 frontend
+│   ├── 📁 src
+│   │   ├── 📁 components
+│   │   │   ├── Dashboard
+│   │   │   ├── Charts
+│   │   │   ├── Reports
+│   │   │   └── Settings
+│   │   ├── 📁 pages
+│   │   │   ├── Home
+│   │   │   ├── Repositories
+│   │   │   ├── Metrics
+│   │   │   └── Recommendations
+│   │   └── 📁 services
+│   │       ├── api
+│   │       └── auth
+├── 📁 infra
+│   ├── docker-compose.yml
+│   ├── Dockerfile.backend
+│   ├── Dockerfile.frontend
+│   └── nginx.conf
+├── 📁 docs
+│   ├── API.md
+│   └── DEPLOYMENT.md
+└── docker-compose.yml
+```
+
+## 🔧 Key Features
+
+### 📊 DORA Metrics Calculation
+- **Deployment Frequency**: Number of deployments per day/week
+- **Lead Time for Changes**: Time from commit to production
+- **Change Failure Rate**: Percentage of deployments causing incidents
+- **Mean Time To Recovery**: Average time to restore service
+
+### 🔗 Multi-Platform Support
+- **GitHub**: Full PR, commit, and workflow analysis
+- **GitLab**: Merge request and pipeline metrics
+- **Azure DevOps**: Repo and pipeline integration
+
+### 📈 Dashboard & Visualization
+- Real-time metrics display
+- Comparative analysis across platforms
+- Historical trend tracking
+- Customizable views
+
+### 📄 Automated Reporting
+- Professional PDF generation
+- Executive summaries
+- Actionable recommendations
+- Scheduled report delivery
+
+## 📋 API Endpoints
+
+### Authentication
+```
+POST   /api/auth/login
+POST   /api/auth/register
+POST   /api/auth/refresh
+```
+
+### Repository Management
+```
+GET    /api/repos
+POST   /api/repos/connect
+GET    /api/repos/:id/metrics
+DELETE /api/repos/:id
+```
+
+### Metrics & Analysis
+```
+GET    /api/metrics/dora
+GET    /api/metrics/trends
+GET    /api/metrics/comparison
+POST   /api/metrics/calculate
+```
+
+### Reports
+```
+GET    /api/reports
+POST   /api/reports/generate
+GET    /api/reports/:id/download
+```
+
+## 🐳 Docker Deployment
+
+```yaml
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secure_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://admin:secure_password@postgres:5432/analytics
+      NODE_ENV: production
+    depends_on:
+      - postgres
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_URL: http://backend:5000
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./infra/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
+```
+
+## 🧪 Testing
+
+```bash
+# Run backend tests
+cd backend
+npm test
+
+# Run frontend tests
+cd frontend
+npm test
+
+# Run e2e tests
+npm run test:e2e
+```
+
+## 📊 Data Collection Schema
+
+```mermaid
+graph LR
+    subgraph "GitHub"
+        GH_API[GitHub API]
+        GH_Webhooks[GitHub Webhooks]
+    end
+    
+    subgraph "GitLab"
+        GL_API[GitLab API]
+        GL_Webhooks[GitLab Webhooks]
+    end
+    
+    subgraph "Azure DevOps"
+        ADO_API[Azure DevOps API]
+        ADO_Webhooks[Azure Webhooks]
+    end
+    
+    subgraph "Data Processing"
+        DC[Data Collector]
+        NM[Normalization Module]
+        QC[Quality Check]
+    end
+    
+    subgraph "Storage"
+        RM[Raw Metrics]
+        AM[Aggregated Metrics]
+        CM[Calculated Metrics]
+    end
+    
+    GH_API --> DC
+    GL_API --> DC
+    ADO_API --> DC
+    
+    DC --> RM
+    RM --> NM
+    NM --> QC
+    QC --> AM
+    AM --> CM
+```
+
+## 🚀 Development Workflow
+
+### Day 1: Core Infrastructure
+- [x] Project setup and scaffolding
+- [x] Database schema design
+- [x] GitHub connector implementation
+- [x] Basic API endpoints
+- [x] Authentication system
+
+### Day 2: MVP Features
+- [x] GitLab and Azure DevOps connectors
+- [x] DORA metrics calculation
+- [x] Dashboard UI
+- [x] PDF report generation
+- [x] Recommendation engine
+
+## 👥 Team Structure
+
+| Role | Members | Responsibilities |
+|------|---------|------------------|
+| **Tech Lead** | 1 | Architecture, Code Review, Technical Decisions |
+| **Backend Dev** | 3 | API Development, Data Connectors, KPI Engine |
+| **Frontend Dev** | 2 | UI/UX, Dashboard, Visualization |
+| **DevOps** | 1 | Infrastructure, CI/CD, Deployment |
+| **QA** | 1 | Testing, Validation, Documentation |
+
+## 📈 Success Metrics
+
+### Technical Metrics
+- ✅ API response time < 200ms
+- ✅ Data collection accuracy > 99%
+- ✅ PDF generation < 10 seconds
+- ✅ System uptime > 99.5%
+
+### Business Metrics
+- ✅ DORA metrics calculated accurately
+- ✅ Cross-platform comparison enabled
+- ✅ Actionable recommendations provided
+- ✅ Executive reports generated automatically
+
+## 🔒 Security
+
+- Token-based authentication
+- Environment variable management
+- API rate limiting
+- SQL injection prevention
+- XSS protection
+- CORS configuration
+- Audit logging
+
+## 📚 Documentation
+
+- [API Documentation](./docs/API.md)
+- [Deployment Guide](./docs/DEPLOYMENT.md)
+- [User Manual](./docs/USER_GUIDE.md)
+- [Development Guide](./docs/DEVELOPMENT.md)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support, email support@multirepo-analytics.com or open an issue in the repository.
 
 ---
 
-## 📊 Scope Minimal Viable Product
+**Built with ❤️ for engineering teams who value data-driven decisions.**
 
-### ✅ **INCLUS**
-- ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github) Un seul repository GitHub
-- ![Clock](https://img.shields.io/badge/-30_jours-FF6B6B?style=flat-square) Données des 30 derniers jours
-- ![Dashboard](https://img.shields.io/badge/-4_KPI_DORA-4ECDC4?style=flat-square) Les 4 KPI DORA simplifiés
-- ![PDF](https://img.shields.io/badge/-Rapport_PDF-FF9F1C?style=flat-square) Génération de rapport PDF
-- ![Rules](https://img.shields.io/badge/-Recommandations-6A0572?style=flat-square) Règles de recommandations simples
-
-### ❌ **EXCLU** (pour ce MVP)
-- Multiples sources Git (GitLab/Azure)
-- Authentification avancée
-- Intelligence Artificielle
-- Mise à jour temps réel
-
----
-
-## 🏗️ Architecture Technique
-
-```
-┌─────────────────┐
-│   GitHub API    │
-│    🐙           │
-└────────┬────────┘
-         │
-┌────────▼────────┐
-│  Backend Node.js│
-│  🟢 Express     │
-└────────┬────────┘
-         │
-┌────────▼────────┐
-│   SQLite 🗄️     │
-│   (MVP ready)   │
-└────────┬────────┘
-         │
-┌────────▼────────┐    ┌──────────────┐
-│  Frontend React │    │  PDF Service │
-│  ⚛️ Vite + Tailwind│    │  🖨️ Puppeteer │
-└─────────────────┘    └──────────────┘
-```
-
----
-
-## 🛠️ Stack Technologique
-
-### **Backend**
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-07405E?style=flat-square&logo=sqlite&logoColor=white)
-
-### **Frontend**
-![React](https://img.shields.io/badge/React-18+-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
-![Recharts](https://img.shields.io/badge/Recharts-FF6384?style=flat-square)
-
-### **Services**
-![Puppeteer](https://img.shields.io/badge/Puppeteer-40B5A4?style=flat-square&logo=puppeteer&logoColor=white)
-![GitHub API](https://img.shields.io/badge/GitHub_API-181717?style=flat-square&logo=github)
-
----
-
-## 📈 Métriques DORA – Version MVP
-
-| KPI | Calcul MVP | Source GitHub |
-|-----|------------|---------------|
-| **Deployment Frequency** | Nombre de releases / période | Releases |
-| **Lead Time for Changes** | (date commit → date release) | Commits + Releases |
-| **Change Failure Rate** | Issues `bug` fermées / releases totales | Issues + Releases |
-| **MTTR** | Temps moyen issue ouverte → fermée | Issues |
-
----
-
-## 🗂️ Structure du Projet
-
-```
-dora-mvp-48h/
-├── backend/
-│   ├── index.js              # Server principal
-│   ├── github.service.js     # Intéraction GitHub API
-│   ├── dora.service.js       # Calcul des métriques DORA
-│   ├── pdf.service.js        # Génération PDF avec Puppeteer
-│   └── database.js           # Configuration SQLite
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── RepoSelector.jsx
-│   │   │   └── Recommendations.jsx
-│   │   ├── components/
-│   │   │   ├── KPICard.jsx
-│   │   │   └── SimpleChart.jsx
-│   │   └── App.jsx
-│   └── package.json
-├── templates/
-│   └── report.html           # Template HTML pour PDF
-└── README.md
-```
-
----
-
-## 👥 Équipe Minimaliste
-
-### **Option 1-2 personnes**
-- **1 Développeur Fullstack** (Backend + Frontend)
-- **1 Développeur Frontend** (UI/UX focus)
-
-### **Option 3-4 personnes**
-- **2 Backend** (API + Data processing)
-- **1 Frontend** (Dashboard + PDF)
-- **1 Support** (UI/Testing/Documentation)
-
----
-
-## ⏰ Plan d'Exécution Heure par Heure
-
-### **JOUR 1 – FONDATIONS & DATA**
-**MATIN (08:00-12:00)**
-```
-08:00-09:00 → Setup environnement & repo
-09:00-10:30 → Connexion GitHub API (token perso)
-10:30-12:00 → Récupération commits, releases, issues
-```
-
-**APRÈS-MIDI (13:00-18:00)**
-```
-13:00-15:00 → Calcul métriques DORA (service)
-15:00-16:30 → API endpoints /metrics, /repos
-16:30-18:00 → Stockage SQLite & cache
-```
-
-**SOIR (19:00-22:00)**
-```
-19:00-21:00 → Template HTML rapport PDF
-21:00-22:00 → Génération PDF fonctionnelle
-```
-
-### **JOUR 2 – INTERFACE & DÉMO**
-**MATIN (08:00-12:00)**
-```
-08:00-10:00 → Dashboard React (Vite + Tailwind)
-10:00-11:00 → Composants KPI Cards
-11:00-12:00 → Graphique Recharts (déploiements/semaine)
-```
-
-**APRÈS-MIDI (13:00-18:00)**
-```
-13:00-14:30 → Page sélection repository
-14:30-15:30 → Page recommandations (règles-based)
-15:30-17:00 → Intégration bouton génération PDF
-17:00-18:00 → UX polish & responsive design
-```
-
-**SOIR (19:00-22:00)**
-```
-19:00-20:30 → Nettoyage code & tests basiques
-20:30-21:30 → README & documentation
-21:30-22:00 → Préparation démo & pitch
-```
-
----
-
-## ✅ Critères de Succès MVP
-
-- [ ] **Dashboard accessible** avec données réelles
-- [ ] **4 KPI DORA** affichés et compréhensibles
-- [ ] **Rapport PDF généré** en < 5 secondes
-- [ ] **Recommandations contextuelles** basées sur seuils
-- [ ] **Workflow complet** : repo → metrics → dashboard → PDF
-- [ ] **Code prêt pour démo** avec README clair
-
----
-
-## 🎤 Pitch de Démo (30 secondes)
-
-> "Notre MVP transforme votre activité GitHub en métriques DORA actionnables en 2 clics. Visualisez vos performances, générez des rapports exécutifs, et recevez des recommandations concrètes pour améliorer la vélocité de votre équipe."
-
----
-
-## 🔮 Prochaines Étapes (Post-MVP)
-
-- ![GitLab](https://img.shields.io/badge/-GitLab-FC6D26?style=flat-square&logo=gitlab&logoColor=white) Support GitLab / Azure DevOps
-- ![Auth](https://img.shields.io/badge/-Auth_OAuth-4285F4?style=flat-square&logo=google&logoColor=white) Authentification multi-tenant
-- ![AI](https://img.shields.io/badge/-Predictions_ML-FF6B6B?style=flat-square&logo=openai&logoColor=white) Prédictions & recommandations IA
-- ![Benchmark](https://img.shields.io/badge/-Benchmark-6A0572?style=flat-square) Benchmark inter-équipes
-
----
-
-<div align="center">
-
-**🚀 PRÊT À DÉMARRER ?**  
-*48h pour prouver la valeur. Pas une minute de plus.*
-
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/MVP-Ready-green" alt="MVP Ready" />
+  <img src="https://img.shields.io/badge/Production-Ready-blue" alt="Production Ready" />
+  <img src="https://img.shields.io/badge/Open%20Source-MIT-orange" alt="Open Source" />
+</p>
