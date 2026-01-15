@@ -1,82 +1,53 @@
-name: CI/CD Pipeline - DORA Analytics
+ name: Build & Test Next.js
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build-and-test:
     name: Build & Test Next.js
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      # 1️⃣ Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: "pnpm"
 
+      # 3️⃣ Installer pnpm globalement
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # 4️⃣ Installer les dépendances
       - name: Install dependencies
         run: pnpm install
 
+      # 5️⃣ Linter le code
       - name: Run linter
         run: pnpm lint
 
+      # 6️⃣ Lancer les tests unitaires
       - name: Run tests
         run: pnpm test
 
+      # 7️⃣ Build Next.js
       - name: Build Next.js
         run: pnpm build
 
+      # 8️⃣ Upload artefact pour déploiement
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: next-build
           path: .next/
-
-  deploy:
-    name: Deploy Application
-    runs-on: ubuntu-latest
-    needs: build-and-test
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: next-build
-          path: .next/
-
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          port: ${{ secrets.SERVER_PORT }}
-          script: |
-            cd /var/www/dora-analytics
-            git pull origin main
-            pnpm install --production
-            pnpm build
-            pm2 restart all
-
-  notify:
-    name: Slack Notification
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: Send Slack message
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          payload: |
-            {
-              "channel": "#deployments",
-              "text": "✅ DORA Analytics déployé avec succès sur le serveur !"
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
