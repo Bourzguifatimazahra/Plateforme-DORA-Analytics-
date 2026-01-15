@@ -1,388 +1,286 @@
- # 📊 Multi-Repo Analytics Platform
+# DORA KPI Dashboard
 
-## 🎯 Overview
+A comprehensive, AI-powered dashboard for tracking and analyzing DORA (DevOps Research and Assessment) metrics across multiple Git platforms. This application helps development teams understand their software delivery performance through visual analytics and intelligent insights.
 
-A unified DevOps intelligence platform that analyzes GitHub, GitLab, and Azure DevOps repositories to provide DORA metrics, performance insights, and automated reporting for engineering leadership.
-# Dashboard
+![DORA Metrics Dashboard](https://img.shields.io/badge/DORA-Metrics-blue)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Framer Motion](https://img.shields.io/badge/Framer-Motion-purple)
 
-Here's a screenshot of my dashboard:
+## 🚀 Features
 
-![Dashboard Screenshot]( Gemini_Generated_Image_b96h3rb96h3rb96h.png)
+### Core Capabilities
 
-## 🚀 Quick Start
+- **Multi-Platform Support**: Analyze repositories from GitHub, GitLab, and Azure DevOps
+- **DORA Metrics Tracking**: Comprehensive tracking of the four key DORA metrics:
+  - **Deployment Frequency**: How often code is deployed to production
+  - **Lead Time for Changes**: Time from commit to production
+  - **Change Failure Rate**: Percentage of deployments causing failures
+  - **Mean Time to Restore (MTTR)**: Average time to recover from failures
 
-```bash
-# Clone the repository
-git clone https://github.com/your-org/multi-repo-analytics
-cd multi-repo-analytics
+### Developer Performance Analytics
 
-# Backend setup
-cd backend
-npm install
-cp .env.example .env
-npm run dev
+- **Individual Developer Metrics**:
+  - Commit frequency and contribution percentage
+  - Pull request velocity and merge rate
+  - Average review time
+  - Code quality scores
+  - Active days tracking
+  - PR velocity per developer
 
-# Frontend setup
-cd ../frontend
-npm install
-npm run dev
+- **Team Performance Insights**:
+  - Average merge rate across team
+  - PR velocity trends
+  - Top contributors identification
+  - Active developer count
 
-# Access the application
-# Frontend: http://localhost:3000
-# Backend API: http://localhost:5000
-```
+### AI-Powered DevOps Assistant (Dora)
 
-## 🏗️ System Architecture
+An integrated AI chat assistant that helps users:
 
-```mermaid
-graph TB
-    subgraph "Data Sources"
-        GH[GitHub Repo]
-        GL[GitLab Repo]
-        AD[Azure DevOps Repo]
-    end
+- Ask questions about DevOps performance
+- Receive explanations of DORA metrics
+- Understand why metrics improved or degraded
+- Get suggestions to optimize pipelines
 
-    subgraph "Platform"
-        API[API Gateway]
-        DC[Data Collector]
-        KE[KPI Engine]
-        DB[(PostgreSQL)]
-        PDF[PDF Generator]
-        RE[Recommendation Engine]
-        FE[Frontend Dashboard]
-    end
+**Example Questions Dora Can Answer**:
+- "Why did deployment frequency decrease last week?"
+- "Which repository has the highest failure rate?"
+- "How can we reduce lead time for changes?"
+- "What's causing our change failure rate to be high?"
+- "How can we improve our MTTR?"
 
-    GH --> API
-    GL --> API
-    AD --> API
-    
-    API --> DC
-    DC --> KE
-    KE --> DB
-    KE --> PDF
-    KE --> RE
-    
-    DB --> FE
-    PDF --> FE
-    RE --> FE
-    
-    FE --> User[End User]
-```
+### Time Period Filtering
 
-## 🛠️ Technology Stack
+Filter your analysis by different time periods:
+- **Last Day**: Quick snapshot of recent activity
+- **Last Week**: Short-term performance trends
+- **Last Month**: Monthly performance overview (default)
+- **Last Year**: Long-term trend analysis
+
+### Visualizations & Reports
+
+- **Animated Charts**: Interactive deployment frequency trends
+- **Performance Ratings**: Visual indicators (Elite, High, Medium, Low) based on DORA benchmarks
+- **PDF Export**: Generate comprehensive reports for stakeholders
+- **Real-time Updates**: Refresh data on demand
+
+### Design Features
+
+- **Modern UI**: Beautiful, responsive design with smooth animations
+- **Dark Mode Support**: Automatic theme switching
+- **Accessibility**: WCAG-compliant interface
+- **Mobile Responsive**: Works seamlessly on all devices
+
+## 🛠️ Technologies Used
 
 ### Frontend
-<p align="left">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white" alt="Chart.js" />
-  <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="Redux" />
-</p>
 
-### Backend
-<p align="left">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
-  <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" alt="Jest" />
-</p>
+- **Next.js 16**: React framework with App Router
+- **React 19**: UI library
+- **TypeScript 5**: Type-safe development
+- **Tailwind CSS 4**: Utility-first CSS framework
+- **Framer Motion**: Advanced animations and transitions
+- **Radix UI**: Accessible component primitives
+- **Recharts**: Data visualization library
+- **Lucide React**: Icon library
 
-### DevOps & Tools
-<p align="left">
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
-  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" alt="GitHub Actions" />
-  <img src="https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&logo=puppeteer&logoColor=white" alt="Puppeteer" />
-  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="JWT" />
-</p>
+### Backend & APIs
 
-## 📁 Project Structure
+- **Next.js API Routes**: Serverless API endpoints
+- **GitHub API**: Repository data fetching
+- **GitLab API**: GitLab repository integration
+- **Azure DevOps API**: Azure repository integration
+- **OpenAI API**: AI-powered chat assistant
 
-```
-multi-repo-analytics/
-├── 📁 backend
-│   ├── 📁 src
-│   │   ├── 📁 api
-│   │   │   ├── auth
-│   │   │   ├── repos
-│   │   │   ├── metrics
-│   │   │   └── reports
-│   │   ├── 📁 connectors
-│   │   │   ├── github
-│   │   │   ├── gitlab
-│   │   │   └── azure-devops
-│   │   ├── 📁 services
-│   │   │   ├── data-collector
-│   │   │   ├── kpi-calculator
-│   │   │   ├── recommendation-engine
-│   │   │   └── pdf-generator
-│   │   └── 📁 database
-│   │       └── models
-├── 📁 frontend
-│   ├── 📁 src
-│   │   ├── 📁 components
-│   │   │   ├── Dashboard
-│   │   │   ├── Charts
-│   │   │   ├── Reports
-│   │   │   └── Settings
-│   │   ├── 📁 pages
-│   │   │   ├── Home
-│   │   │   ├── Repositories
-│   │   │   ├── Metrics
-│   │   │   └── Recommendations
-│   │   └── 📁 services
-│   │       ├── api
-│   │       └── auth
-├── 📁 infra
-│   ├── docker-compose.yml
-│   ├── Dockerfile.backend
-│   ├── Dockerfile.frontend
-│   └── nginx.conf
-├── 📁 docs
-│   ├── API.md
-│   └── DEPLOYMENT.md
-└── docker-compose.yml
-```
+### Development Tools
 
-## 🔧 Key Features
+- **ESLint**: Code linting
+- **PostCSS**: CSS processing
+- **Autoprefixer**: CSS vendor prefixing
 
-### 📊 DORA Metrics Calculation
-- **Deployment Frequency**: Number of deployments per day/week
-- **Lead Time for Changes**: Time from commit to production
-- **Change Failure Rate**: Percentage of deployments causing incidents
-- **Mean Time To Recovery**: Average time to restore service
+### Data Processing
 
-### 🔗 Multi-Platform Support
-- **GitHub**: Full PR, commit, and workflow analysis
-- **GitLab**: Merge request and pipeline metrics
-- **Azure DevOps**: Repo and pipeline integration
+- **date-fns**: Date manipulation and formatting
+- **jsPDF**: PDF report generation
 
-### 📈 Dashboard & Visualization
-- Real-time metrics display
-- Comparative analysis across platforms
-- Historical trend tracking
-- Customizable views
+## 📦 Installation
 
-### 📄 Automated Reporting
-- Professional PDF generation
-- Executive summaries
-- Actionable recommendations
-- Scheduled report delivery
+### Prerequisites
 
-## 📋 API Endpoints
+- Node.js 18+ or higher
+- pnpm (recommended) or npm/yarn
+- Git
 
-### Authentication
-```
-POST   /api/auth/login
-POST   /api/auth/register
-POST   /api/auth/refresh
-```
+### Setup Steps
 
-### Repository Management
-```
-GET    /api/repos
-POST   /api/repos/connect
-GET    /api/repos/:id/metrics
-DELETE /api/repos/:id
-```
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd dora-kpi-dashboard
+   ```
 
-### Metrics & Analysis
-```
-GET    /api/metrics/dora
-GET    /api/metrics/trends
-GET    /api/metrics/comparison
-POST   /api/metrics/calculate
-```
+2. **Install dependencies**:
+   ```bash
+   pnpm install
+   # or
+   npm install
+   ```
 
-### Reports
-```
-GET    /api/reports
-POST   /api/reports/generate
-GET    /api/reports/:id/download
-```
+3. **Configure environment variables**:
+   
+   Create a `.env.local` file in the root directory:
+   ```env
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
 
-## 🐳 Docker Deployment
+   For private repositories, you may also need:
+   ```env
+   GITLAB_TOKEN=your_gitlab_token_here
+   AZURE_DEVOPS_TOKEN=your_azure_token_here
+   ```
 
-```yaml
-version: '3.8'
-services:
-  postgres:
-    image: postgres:15
-    environment:
-      POSTGRES_DB: analytics
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secure_password
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+4. **Run the development server**:
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   ```
 
-  backend:
-    build: ./backend
-    environment:
-      DATABASE_URL: postgresql://admin:secure_password@postgres:5432/analytics
-      NODE_ENV: production
-    depends_on:
-      - postgres
+5. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-  frontend:
-    build: ./frontend
-    environment:
-      VITE_API_URL: http://backend:5000
-    depends_on:
-      - backend
+## 🎯 Usage
 
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-    volumes:
-      - ./infra/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - frontend
-      - backend
+### Analyzing a Repository
 
-volumes:
-  postgres_data:
-```
+1. **Navigate to Analyze Page**: Click "Start Analysis" on the home page
+2. **Select Platform**: Choose GitHub, GitLab, or Azure DevOps
+3. **Enter Repository Details**:
+   - **GitHub**: `owner/repo` or `https://github.com/owner/repo`
+   - **GitLab**: `owner/repo` or `https://gitlab.com/owner/repo`
+   - **Azure DevOps**: `org/project/repo` or full Azure DevOps URL
+4. **Add Access Token** (optional): Required for private repositories
+5. **Click "Start Analysis"**: Wait for the analysis to complete
 
-## 🧪 Testing
+### Using the Dashboard
 
-```bash
-# Run backend tests
-cd backend
-npm test
+1. **Overview Tab**: View DORA metrics and team performance KPIs
+2. **Team Performance Tab**: Detailed developer statistics and contributions
+3. **AI Assistant Tab**: Chat with Dora about your DevOps metrics
 
-# Run frontend tests
-cd frontend
-npm test
+### Time Period Filtering
 
-# Run e2e tests
-npm run test:e2e
-```
+- Use the dropdown in the dashboard header to select:
+  - Last Day
+  - Last Week
+  - Last Month
+  - Last Year
 
-## 📊 Data Collection Schema
+### Exporting Reports
 
-```mermaid
-graph LR
-    subgraph "GitHub"
-        GH_API[GitHub API]
-        GH_Webhooks[GitHub Webhooks]
-    end
-    
-    subgraph "GitLab"
-        GL_API[GitLab API]
-        GL_Webhooks[GitLab Webhooks]
-    end
-    
-    subgraph "Azure DevOps"
-        ADO_API[Azure DevOps API]
-        ADO_Webhooks[Azure Webhooks]
-    end
-    
-    subgraph "Data Processing"
-        DC[Data Collector]
-        NM[Normalization Module]
-        QC[Quality Check]
-    end
-    
-    subgraph "Storage"
-        RM[Raw Metrics]
-        AM[Aggregated Metrics]
-        CM[Calculated Metrics]
-    end
-    
-    GH_API --> DC
-    GL_API --> DC
-    ADO_API --> DC
-    
-    DC --> RM
-    RM --> NM
-    NM --> QC
-    QC --> AM
-    AM --> CM
-```
+- Click the "Export PDF" button to generate a comprehensive report
+- Reports include all metrics, charts, and developer statistics
 
-## 🚀 Development Workflow
+## 📊 DORA Metrics Explained
 
-### Day 1: Core Infrastructure
-- [x] Project setup and scaffolding
-- [x] Database schema design
-- [x] GitHub connector implementation
-- [x] Basic API endpoints
-- [x] Authentication system
+### Deployment Frequency
 
-### Day 2: MVP Features
-- [x] GitLab and Azure DevOps connectors
-- [x] DORA metrics calculation
-- [x] Dashboard UI
-- [x] PDF report generation
-- [x] Recommendation engine
+**What it measures**: How often code is successfully deployed to production.
 
-## 👥 Team Structure
+**Benchmarks**:
+- **Elite**: Multiple deployments per day
+- **High**: Daily to weekly deployments
+- **Medium**: Weekly to monthly deployments
+- **Low**: Less than monthly deployments
 
-| Role | Members | Responsibilities |
-|------|---------|------------------|
-| **Tech Lead** | 1 | Architecture, Code Review, Technical Decisions, Validation, Documentation  |
-| **Backend Dev** | 2 | API Development, Data Connectors, KPI Engine |
-| **Frontend Dev** | 2 | UI/UX, Dashboard, Visualization |
-| **DevOps** | 1 | Infrastructure, CI/CD, Deployment |
-| **Ai** | 2 |Powered DevOps Assistant |
+### Lead Time for Changes
 
-## 📈 Success Metrics
+**What it measures**: The time from when code is committed until it's running in production.
 
-### Technical Metrics
-- ✅ API response time < 200ms
-- ✅ Data collection accuracy > 99%
-- ✅ PDF generation < 10 seconds
-- ✅ System uptime > 99.5%
+**Benchmarks**:
+- **Elite**: Less than 1 hour
+- **High**: Less than 1 day
+- **Medium**: Less than 1 week
+- **Low**: More than 1 week
 
-### Business Metrics
-- ✅ DORA metrics calculated accurately
-- ✅ Cross-platform comparison enabled
-- ✅ Actionable recommendations provided
-- ✅ Executive reports generated automatically
+### Change Failure Rate
 
-## 🔒 Security
+**What it measures**: The percentage of deployments that result in a failure in production.
 
-- Token-based authentication
-- Environment variable management
-- API rate limiting
-- SQL injection prevention
-- XSS protection
-- CORS configuration
-- Audit logging
+**Benchmarks**:
+- **Elite**: 0-15%
+- **High**: 16-30%
+- **Medium**: 31-45%
+- **Low**: More than 45%
 
-## 📚 Documentation
+### Mean Time to Restore (MTTR)
 
-- [API Documentation](./docs/API.md)
-- [Deployment Guide](./docs/DEPLOYMENT.md)
-- [User Manual](./docs/USER_GUIDE.md)
-- [Development Guide](./docs/DEVELOPMENT.md)
+**What it measures**: How long it takes to restore service when a failure occurs.
+
+**Benchmarks**:
+- **Elite**: Less than 1 hour
+- **High**: Less than 1 day
+- **Medium**: Less than 1 week
+- **Low**: More than 1 week
+
+## 🔧 Configuration
+
+### API Rate Limits
+
+The application respects API rate limits for all platforms:
+- **GitHub**: 5,000 requests/hour (unauthenticated), 15,000/hour (authenticated)
+- **GitLab**: 2,000 requests/hour
+- **Azure DevOps**: Varies by organization
+
+### Caching
+
+Data is cached for 5 minutes to reduce API calls and improve performance.
+
+### Analysis Limits
+
+- Maximum 500 commits per repository
+- Maximum 500 pull requests/merge requests per repository
+- Supports multiple repositories in a single analysis
 
 ## 🤝 Contributing
 
+Contributions are welcome! Please follow these steps:
+
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## 📝 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
-## 🆘 Support
+## 🙏 Acknowledgments
 
-For support, email support@multirepo-analytics.com or open an issue in the repository.
+- DORA (DevOps Research and Assessment) for the metrics framework
+- All the open-source libraries that made this project possible
+- The development teams using this tool to improve their DevOps practices
+
+## 📧 Support
+
+For issues, questions, or suggestions:
+- Open an issue on GitHub
+- Check the documentation
+- Contact the maintainers
+
+## 🔮 Future Enhancements
+
+- [ ] Real-time webhook integration for live updates
+- [ ] Custom metric definitions
+- [ ] Team comparison views
+- [ ] Integration with CI/CD tools
+- [ ] Advanced filtering and search
+- [ ] Export to multiple formats (CSV, JSON)
+- [ ] Custom dashboard layouts
+- [ ] Alert system for metric thresholds
 
 ---
 
-**Built with ❤️ for engineering teams who value data-driven decisions.**
-
-<p align="center">
-  <img src="https://img.shields.io/badge/MVP-Ready-green" alt="MVP Ready" />
-  <img src="https://img.shields.io/badge/Production-Ready-blue" alt="Production Ready" />
-  <img src="https://img.shields.io/badge/Open%20Source-MIT-orange" alt="Open Source" />
-</p>
+**Built with ❤️ for DevOps teams everywhere**
