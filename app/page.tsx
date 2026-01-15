@@ -120,38 +120,38 @@ export default function WelcomePage() {
   const features = [
     {
       icon: Zap,
-      title: "See how fast you really ship",
-      description: "Track deployment frequency and lead time from real Git activity, not slide decks.",
+      title: t("features.fastShip.title"),
+      description: t("features.fastShip.desc"),
       gradient: "bg-gradient-to-br from-blue-500 to-cyan-500",
     },
     {
       icon: Users,
-      title: "Understand team delivery patterns",
-      description: "Spot who is overloaded, who is blocked, and how work actually flows through your pipelines.",
+      title: t("features.teamPatterns.title"),
+      description: t("features.teamPatterns.desc"),
       gradient: "bg-gradient-to-br from-emerald-500 to-teal-500",
     },
     {
       icon: MessageSquare,
-      title: "Ask questions in plain language",
-      description: "Get explanations for weird spikes, fragile releases, and long review queues in simple terms.",
+      title: t("features.plainQuestions.title"),
+      description: t("features.plainQuestions.desc"),
       gradient: "bg-gradient-to-br from-violet-500 to-purple-500",
     },
     {
       icon: FileText,
-      title: "Walk into reviews prepared",
-      description: "Export a concise report that shows how delivery is going without 40 slides of fluff.",
+      title: t("features.reviewsPrepared.title"),
+      description: t("features.reviewsPrepared.desc"),
       gradient: "bg-gradient-to-br from-orange-500 to-amber-500",
     },
     {
       icon: GitBranch,
-      title: "Look across repositories",
-      description: "Compare delivery across teams, services, or branches instead of arguing from anecdotes.",
+      title: t("features.acrossRepos.title"),
+      description: t("features.acrossRepos.desc"),
       gradient: "bg-gradient-to-br from-pink-500 to-rose-500",
     },
     {
       icon: BarChart3,
-      title: "Stay in the metrics, not the tool",
-      description: "A focused view on delivery and reliability – no noisy widget zoo, no fake dashboards.",
+      title: t("features.stayInMetrics.title"),
+      description: t("features.stayInMetrics.desc"),
       gradient: "bg-gradient-to-br from-indigo-500 to-blue-500",
     },
   ]
@@ -186,7 +186,7 @@ export default function WelcomePage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/20 mb-6 justify-center"
             >
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm text-primary font-medium">DORA metrics from your repos – not a consulting deck</span>
+              <span className="text-sm text-primary font-medium">{t("welcome.badge")}</span>
             </motion.div>
 
             {/* Title */}
@@ -196,10 +196,10 @@ export default function WelcomePage() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-4xl md:text-6xl font-bold mb-4 leading-tight max-w-3xl mx-auto"
             >
-              <span className="text-foreground">Understand your delivery.</span>
+              <span className="text-foreground">{t("welcome.title.line1")}</span>
               <br />
-              <span className="text-primary">Stop guessing in</span>{" "}
-              <span className="text-accent">meetings.</span>
+              <span className="text-primary">{t("welcome.title.line2a")}</span>{" "}
+              <span className="text-accent">{t("welcome.title.line2b")}</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -209,8 +209,7 @@ export default function WelcomePage() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl mx-auto"
             >
-              Most teams measure delivery too late – or not at all. We turn your Git history into a clear picture of how
-              work moves from commit to production, so you can argue less and fix the real bottlenecks.
+              {t("welcome.subtitle")}
             </motion.p>
 
             {/* CTA Buttons */}
@@ -225,7 +224,7 @@ export default function WelcomePage() {
                   size="lg"
                   className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all text-white px-8 py-5 text-base md:text-lg group"
                 >
-                  See DORA metrics on a repo
+                  {t("welcome.cta.metrics")}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -235,7 +234,7 @@ export default function WelcomePage() {
                 className="border-border hover:bg-secondary/50 px-8 py-5 text-base md:text-lg bg-transparent"
                 onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
               >
-                Why these metrics matter
+                {t("welcome.cta.why")}
               </Button>
               <Link href="/dashboard?demo=1">
                 <Button
@@ -243,7 +242,7 @@ export default function WelcomePage() {
                   variant="outline"
                   className="border-border hover:bg-secondary/50 px-8 py-5 text-base md:text-lg bg-transparent"
                 >
-                  Voir la démo
+                  {t("welcome.cta.demo")}
                 </Button>
               </Link>
             </motion.div>
@@ -257,10 +256,10 @@ export default function WelcomePage() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
           >
             {[
-              { label: "Deployments / week", value: "12", icon: Zap },
-              { label: "Median lead time", value: "2.4d", icon: Clock },
-              { label: "Change failure rate", value: "18%", icon: AlertTriangle },
-              { label: "Median MTTR", value: "3.1h", icon: TrendingUp },
+              { label: t("welcome.stat.deployments"), value: "12", icon: Zap },
+              { label: t("welcome.stat.leadTime"), value: "2.4d", icon: Clock },
+              { label: t("welcome.stat.changeFailure"), value: "18%", icon: AlertTriangle },
+              { label: t("welcome.stat.mttr"), value: "3.1h", icon: TrendingUp },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -274,7 +273,7 @@ export default function WelcomePage() {
                 <div className="text-2xl font-bold text-foreground">{stat.value}</div>
                 <div className="text-xs text-muted-foreground">
                   {stat.label}
-                  <span className="block mt-1 text-[10px] opacity-70">Sample metrics from demo</span>
+                  <span className="block mt-1 text-[10px] opacity-70">{t("welcome.stat.sample")}</span>
                 </div>
               </motion.div>
             ))}
@@ -302,10 +301,8 @@ export default function WelcomePage() {
       <section id="features" className="py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What you actually get</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Not another generic dashboard. A focused view on the four DORA metrics and the behavior behind them.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t("features.title")}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t("features.subtitle")}</p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -330,26 +327,20 @@ export default function WelcomePage() {
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold text-foreground mb-6">Why DORA metrics matter</h2>
-                  <p className="text-muted-foreground mb-4">
-                    Teams with healthy DORA metrics ship faster and break less. Teams without them spend meetings
-                    debating feelings instead of looking at data.
-                  </p>
-                  <p className="text-muted-foreground mb-6">
-                    Dora turns your Git and CI data into those four signals – deployment frequency, lead time,
-                    change failure rate, and recovery time – so you can see where delivery is stuck and what is improving.
-                  </p>
+                  <h2 className="text-3xl font-bold text-foreground mb-6">{t("about.title")}</h2>
+                  <p className="text-muted-foreground mb-4">{t("about.p1")}</p>
+                  <p className="text-muted-foreground mb-6">{t("about.p2")}</p>
                   <div className="mb-6">
-                    <h3 className="text-sm font-semibold text-foreground mb-2">Built for</h3>
+                    <h3 className="text-sm font-semibold text-foreground mb-2">{t("about.builtFor.title")}</h3>
                     <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• DevOps and platform engineers who own the pipelines</li>
-                      <li>• Engineering managers who need an honest view of delivery</li>
-                      <li>• Tech leads who want to de-risk deployments without slowing teams down</li>
+                      <li>{t("about.builtFor.devops")}</li>
+                      <li>{t("about.builtFor.managers")}</li>
+                      <li>{t("about.builtFor.leads")}</li>
                     </ul>
                   </div>
                   <Link href="/analyze">
                     <Button className="bg-gradient-to-r from-primary to-accent text-white">
-                      Try it on a public GitHub repo <ArrowRight className="ml-2 h-4 w-4" />
+                      {t("about.cta")} <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                 </div>
@@ -394,10 +385,8 @@ export default function WelcomePage() {
               >
                 <Activity className="h-12 w-12 text-primary" />
               </motion.div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to optimize your DevOps?</h2>
-              <p className="text-muted-foreground mb-8 text-lg">
-                Start analyzing your repositories today and get actionable insights powered by AI.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">{t("cta.title")}</h2>
+              <p className="text-muted-foreground mb-8 text-lg">{t("cta.subtitle")}</p>
               <Link href="/analyze">
                 <Button
                   size="lg"
