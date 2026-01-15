@@ -486,7 +486,7 @@ MIT License - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 ### 🔄 Mises à Jour Récentes
 - ✅ Déploiement sur Netlify
 - ✅ Pipeline CI/CD GitHub Actions
-- ✅ Edge Functions pour API
+- ✅ Edge Functions pour API 
 - ✅ Tests automatisés
 - ✅ Monitoring SonarQube
 
