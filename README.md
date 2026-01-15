@@ -498,6 +498,6 @@ MIT License - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 ---
 
 **Version :** 1.0.0  
-**Dernière mise à jour :** Janvier 2024  
+**Dernière mise à jour :** Janvier 2026  
 **Environnement :** Production (Netlify)  
 **Statut :** 🟢 Actif & Maintenu
