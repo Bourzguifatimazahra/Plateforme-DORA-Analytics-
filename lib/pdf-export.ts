@@ -241,7 +241,24 @@ export async function generatePDFReport(analysis: RepoAnalysis, projectName: str
   sectionTitle("Team Performance", y)
   y += 4
   const teamCardTop = y + 2
-  const teamCardHeight = pageHeight - teamCardTop - 18
+  
+  // Get developers list
+  const developers = analysis.developers.slice(0, 5)
+  
+  // Calculate dynamic height based on number of developers
+  const rowHeight = 7
+  const headerHeight = 9
+  const headerSpacing = 4
+  const paddingTop = 8
+  const paddingBottom = 8
+  const minRows = 1 // Minimum rows to show even if no developers
+  const numRows = Math.max(minRows, developers.length)
+  const calculatedHeight = paddingTop + headerHeight + headerSpacing + (numRows * rowHeight) + paddingBottom
+  
+  // Ensure the card doesn't exceed page boundaries
+  const maxHeight = pageHeight - teamCardTop - 18
+  const teamCardHeight = Math.min(calculatedHeight, maxHeight)
+  
   drawCard(teamCardTop, teamCardHeight)
 
   const tableLeft = marginX + 4
@@ -253,7 +270,6 @@ export async function generatePDFReport(analysis: RepoAnalysis, projectName: str
   let tableY = teamCardTop + 8
   // Header background with better contrast - darker gray for visibility
   // Increased header height from 7mm to 9mm for better text visibility
-  const headerHeight = 9
   const headerTop = tableY - 6
   doc.setFillColor(229, 231, 235)
   doc.roundedRect(tableLeft - 2, headerTop, pageWidth - marginX * 2 - 4, headerHeight, 2, 2, "F")
@@ -270,9 +286,8 @@ export async function generatePDFReport(analysis: RepoAnalysis, projectName: str
   doc.text("PRs", colPRs, headerTextY)
   doc.text("Contributions", colContrib, headerTextY)
 
-  const developers = analysis.developers.slice(0, 5)
   const totalCommits = developers.reduce((sum, d) => sum + d.commits, 0) || 1
-  const maxPRs = Math.max(...developers.map((d) => d.pullRequests || 1))
+  const maxPRs = Math.max(...developers.map((d) => d.pullRequests || 1), 1)
 
   // Adjust spacing after header to account for increased header height
   tableY = headerTop + headerHeight + 4
