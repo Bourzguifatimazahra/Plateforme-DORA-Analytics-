@@ -1,4 +1,4 @@
- # Plateforme DORA Analytics — Reporting & Intelligence Prédictive
+# Plateforme DORA Analytics — Reporting & Intelligence Prédictive
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
