@@ -14,38 +14,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout code
+      # Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
+      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: "pnpm"
 
-      # 3️⃣ Installer pnpm globalement
+      # Installer pnpm globalement
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # 4️⃣ Installer les dépendances
+      # Installer les dépendances
       - name: Install dependencies
         run: pnpm install
 
-      # 5️⃣ Linter le code
+      # Linter le code
       - name: Run linter
         run: pnpm lint
 
-      # 6️⃣ Lancer les tests unitaires
+      # Lancer les tests unitaires
       - name: Run tests
         run: pnpm test
 
-      # 7️⃣ Build Next.js
+      # Build Next.js
       - name: Build Next.js
         run: pnpm build
 
-      # 8️⃣ Upload artefact pour déploiement
+      # Upload artefact pour déploiement
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
